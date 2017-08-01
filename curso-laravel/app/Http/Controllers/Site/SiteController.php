@@ -21,7 +21,7 @@ class SiteController extends Controller
     }
 
     public function Contato(){
-        return view('site.contact.index', compact());
+        return view('site.contact.index');
     }
 
     public function categoria($id){
