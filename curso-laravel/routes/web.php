@@ -11,6 +11,30 @@
 |
 */
 
+Route::group(['prefix' => 'painel', 'middleware' => 'auth'], function(){
+   Route::get('/user', function(){
+       return 'Gerenciamento de usuários';
+    });
+   Route::get('/financeiro', function(){
+       return 'Gerenciamento de finanças';
+   });
+   Route::get('/', function(){
+       return 'Dashboard';
+   });
+});
+
+Route::get('/login', function(){
+    return "#form de login";
+});
+
+Route::get('/categoria/{idCat?}', function($idCat=''){
+   return "Categoria {$idCat}";
+});
+
+Route::get('/categoria/{idCat}', function($idCat){
+   return "Categoria {$idCat}";
+});
+
 Route::get('/nome/nome2/nome3', function(){
    return 'Rota grande';
 })->name('rota.nomeada');
