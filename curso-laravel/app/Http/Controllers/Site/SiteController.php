@@ -17,7 +17,9 @@ class SiteController extends Controller
 
     public function index(){
         $title = "Teste - Title";
-        return view('site.home.index', compact('title'));
+        $var1 = 123;
+        $arrayData = [];
+        return view('site.home.index', compact('title', 'var1', 'arrayData'));
     }
 
     public function Contato(){
