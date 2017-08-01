@@ -17,3 +17,7 @@ Route::group(['namespace' => 'Site'], function() {
     Route::get('/contato', 'SiteController@contato');
     Route::get('/', 'SiteController@index');
 });
+
+Route::group(['namespace' => 'Painel'], function(){
+    Route::get('/produtos', "ProdutoController@index");
+});
