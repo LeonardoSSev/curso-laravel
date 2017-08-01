@@ -16,14 +16,12 @@ class SiteController extends Controller
     }
 
     public function index(){
-        $teste = 20;
-        $teste2 = 'Leonardo';
-        $teste3 = true;
-        return view('site.home.teste', compact('teste', 'teste2', 'teste3'));
+        $title = "Teste - Title";
+        return view('site.home.index', compact('title'));
     }
 
     public function Contato(){
-        return "Pg Contato";
+        return view('site.contact.index', compact());
     }
 
     public function categoria($id){
