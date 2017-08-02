@@ -120,7 +120,7 @@ class ProdutoController extends Controller
         ]);
 
         if($insert){
-            return "Produto cadastrado com sucesso";
+            return "Produto cadastrado com sucesso. Id = {$insert->id}";
         } else{
             return "Produto não foi cadastrado";
         }
