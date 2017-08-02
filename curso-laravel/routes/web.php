@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::resource('/painel/produtos', 'Painel\ProdutoController');
+
 Route::group(['namespace' => 'Site'], function() {
     Route::get('/categoria/{id}', 'SiteController@categoria');
     Route::get('/categoria2/{id?}', 'SiteController@categoriaOp');
@@ -19,5 +21,5 @@ Route::group(['namespace' => 'Site'], function() {
 });
 
 Route::group(['namespace' => 'Painel'], function(){
-    Route::get('/produtos', "ProdutoController@index");
+    Route::get('/products', "ProdutoController@index");
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Painel;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Painel\Product;
 
 class ProdutoController extends Controller
 {
@@ -12,9 +13,10 @@ class ProdutoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $product)
     {
-        return "Home Page de Produtos";
+        $products = $product->all();
+        return view('painel.products.index', compact('products'));
     }
 
     /**
