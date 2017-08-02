@@ -157,6 +157,7 @@ class ProdutoController extends Controller
 
         */
 
+        /*
         $update = $this->product
                       ->where('number', 1)
                       ->update([
@@ -169,6 +170,17 @@ class ProdutoController extends Controller
             return "Atualizado com sucesso";
         } else{
             return "Erro ao atualizar";
+        }
+        */
+
+        $delete = $this->product
+                        ->where('number', 12312)
+                        ->delete();
+
+        if($delete){
+            return "Deletado com sucesso";
+        } else{
+            return "Falha ao deletar";
         }
     }
 }
