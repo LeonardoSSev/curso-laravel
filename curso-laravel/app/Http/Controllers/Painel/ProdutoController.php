@@ -111,6 +111,7 @@ class ProdutoController extends Controller
         }
         */
 
+        /*
         $insert = $this->product->create([
                         'name'          => 'Nome do produto 2',
                         'number'        => 1234,
@@ -123,6 +124,51 @@ class ProdutoController extends Controller
             return "Produto cadastrado com sucesso. Id = {$insert->id}";
         } else{
             return "Produto não foi cadastrado";
+        }
+        */
+
+        /*
+        $prod = $this->product->find(5);
+        $prod->name = 'Update';
+        $prod->number = '12312';
+        $update = $prod->save();
+
+        if ($update){
+            return "Atualizado com sucesso";
+        } else{
+            return "Erro ao atualizar";
+        }
+        */
+
+        /*
+
+        $prod = $this->product->find(6);
+        $update = $prod->update([
+                        'name'          => 'Update true',
+                        'number'        => 1,
+                        'active'        => false
+        ]);
+
+        if ($update){
+            return "Atualizado com sucesso";
+        } else{
+            return "Erro ao atualizar";
+        }
+
+        */
+
+        $update = $this->product
+                      ->where('number', 1)
+                      ->update([
+                                'name'          => 'Update test',
+                                'number'        => 5,
+                                'active'        => true
+                                ]);
+
+        if ($update){
+            return "Atualizado com sucesso";
+        } else{
+            return "Erro ao atualizar";
         }
     }
 }
