@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Painel;
 
+use App\Http\Requests\Painel\ProductFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Painel\Product;
@@ -45,7 +46,7 @@ class ProdutoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductFormRequest $request)
     {
         //dd($request->all());
         //dd($request->only('nome'));
@@ -57,6 +58,7 @@ class ProdutoController extends Controller
 
         //validando dados
         //$this->validate($request, $this->product->rules);
+        /*
         $messages = [
             'name.required'         => 'O campo nome é de preenchimento obrigatório!',
             'name.min'              => 'O campo nome deve ser preenchido pelo menos com 3 caracteres!',
@@ -74,7 +76,7 @@ class ProdutoController extends Controller
                 ->withErrors($validate)
                 ->withInput();
         }
-
+    */
 
         //cadastrando no banco
         $insert = $this->product->create($dataForm);
