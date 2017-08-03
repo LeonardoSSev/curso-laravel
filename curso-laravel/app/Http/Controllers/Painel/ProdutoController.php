@@ -51,11 +51,14 @@ class ProdutoController extends Controller
         //dd($request->only('nome'));
         //dd($request->except('_token', 'category'));
 
-        //cadastrando no banco
+        //pegando valores do form
         $dataForm = $request->all();
-
         $dataForm['active'] = (!isset($dataForm['active']) == '' ) ? 1 : 0;
 
+        //validando dados
+        $this->validate($request, $this->product->rules);
+
+        //cadastrando no banco
         $insert = $this->product->create($dataForm);
 
         if ($insert)
