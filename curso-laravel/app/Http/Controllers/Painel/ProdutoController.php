@@ -34,7 +34,9 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+        $title = "Cadastrar Novo Produto";
+        $category = ['eletronicos', 'moveis','limpeza', 'banho'];
+        return view('painel.products.create', compact('title', 'category'));
     }
 
     /**
@@ -45,7 +47,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return "Cadastrando";
     }
 
     /**
