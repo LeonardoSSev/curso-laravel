@@ -4,7 +4,6 @@
     <h1 class="title-pg">
         <a href="{{route('produtos.index')}}">
             <span class="glyphicon glyphicon-fast-backward"></span>
-            Voltar
         </a>
         Gestão Produto: <b>{{$product->name or 'Novo'}}</b>
     </h1>
