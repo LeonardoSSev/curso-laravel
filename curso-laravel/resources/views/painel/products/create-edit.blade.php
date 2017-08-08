@@ -1,7 +1,13 @@
 @extends('painel.templates.template')
 
 @section('content')
-    <h1 class="title-pg">Gestão Produto</h1>
+    <h1 class="title-pg">
+        <a href="{{route('produtos.index')}}">
+            <span class="glyphicon glyphicon-fast-backward"></span>
+            Voltar
+        </a>
+        Gestão Produto: <b>{{$product->name or 'Novo'}}</b>
+    </h1>
     @if(isset($errors) && count($errors)>0)
         <div class="alert alert-danger">
           @foreach($errors->all() as $error)
@@ -10,19 +16,16 @@
         </div>
     @endif
     @if(isset($product))
-        <form action="{{route('produtos.update', $product->id)}}" method="POST" class="form">
-            {!! method_field('PUT') !!}
+        {!! Form::model($product, ['route' => ['produtos.update', $product->id], 'method' => 'put', 'class' => 'form']) !!}
     @else
-        <form action="{{route('produtos.store')}}" method="POST" class="form">
+        {!! Form::open(['route' => 'produtos.store', 'class' => 'form']) !!}
     @endif
-
-        {!! csrf_field() !!}
         <div class="form-group">
-            <input type="text" name="name" placeholder="Nome:" class="form-control" value="{{$product->name or old('name')}}">
+            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nome:']) !!}
         </div>
         <div class="form-group">
             <label>
-                <input type="checkbox" name="active" value="1" @if(isset($product) && $product->active == '1') checked @endif>
+                {!! Form::checkbox('active')!!}
                 Ativo?
             </label>
         </div>
@@ -30,21 +33,12 @@
             <input type="text" name="number" placeholder="Número:" class="form-control" value="{{$product->number or old('number')}}">
         </div>
         <div class="form-group">
-            <select name="category" class="form-control">
-                <option value="">Escolha a categoria</option>
-                @foreach($category as $cat)
-                    <option value="{{$cat}}"
-                        @if(isset($product) && $product->category == $cat)
-                            selected
-                        @endif
-                    >{{$cat}}</option>
-                @endforeach
-            </select>
+            {!! Form::select('category', $categories, null, ['class' => 'form-control']) !!}
         </div>
         <div class="form-group">
-            <textarea name="description" placeholder="Descrição" class="form-control">{{$product->description or old('description')}}</textarea>
+            {!! Form::textarea('description', null, ['class' => 'form-control', 'placeholder' => 'Descrição']) !!}
         </div>
-        <button class="btn btn-primary">Enviar</button>
-    </form>
+        {!! Form::submit('Enviar', ['class' => 'btn btn-primary']) !!}
+    {!! Form::close() !!}
 
 @endsection
