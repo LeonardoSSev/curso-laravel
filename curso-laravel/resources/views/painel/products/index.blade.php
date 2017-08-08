@@ -15,10 +15,10 @@
                 <td>{{$product->name}}</td>
                 <td>{{$product->description}}</td>
                 <td>
-                    <a href="" class="actions edit">
+                    <a href="{{route('produtos.edit', $product->id)}}" class="actions edit">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
-                    <a href="" class="actions delete">
+                    <a href="{{route('produtos.destroy', $product->id)}}" class="actions delete">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
                 </td>

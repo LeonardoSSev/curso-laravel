@@ -37,7 +37,7 @@ class ProdutoController extends Controller
     {
         $title = "Cadastrar Novo Produto";
         $category = ['eletronicos', 'moveis','limpeza', 'banho'];
-        return view('painel.products.create', compact('title', 'category'));
+        return view('painel.products.create-edit', compact('title', 'category'));
     }
 
     /**
@@ -110,7 +110,13 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = $this->product->find($id);
+        $category = ['eletronicos', 'moveis','limpeza', 'banho'];
+
+        $title = "Editando produto $product->name";
+
+
+        return view('painel.products.create-edit', compact('product', 'title', 'category'));
     }
 
     /**
@@ -122,7 +128,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return "Editando produto $id";
     }
 
     /**
