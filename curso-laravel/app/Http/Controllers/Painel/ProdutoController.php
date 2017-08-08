@@ -10,10 +10,12 @@ use App\Models\Painel\Product;
 class ProdutoController extends Controller
 {
     private $product;
+    private $totalPages = 3;
 
     public function __construct(Product $product)
     {
         $this->product = $product;
+
     }
 
     /**
@@ -24,7 +26,7 @@ class ProdutoController extends Controller
     public function index()
     {
         $title = "Listagem dos Produtos";
-        $products = $this->product->all();
+        $products = $this->product->paginate($this->totalPages);
         return view('painel.products.index', compact('products', 'title'));
     }
 
